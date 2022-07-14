@@ -1,0 +1,69 @@
+[package]
+name = "binator_core"
+authors = ["Stargateur"]
+version = "0.0.0"
+description = "This contains all cores traits needed to work with binator"
+license = "Zlib"
+repository = "https://github.com/binator/core"
+readme = "readme.md"
+keywords = ["parsing", "combinator", "core"]
+categories = ["parsing"]
+edition = "2021"
+
+include = [
+  "readme.md",
+  "license.md",
+  "Cargo.toml",
+  "rustfmt.toml",
+  "build.rs",
+  "src/**/*.rs",
+]
+
+[features]
+nightly = []
+alloc = []
+std = ["alloc"]
+hashmap = ["std"]
+tracing = ["dep:tracing"]
+default = ["hashmap", "serde", "smallvec", "either"]
+
+[dependencies]
+
+[dependencies.either]
+version = "1.7"
+optional = true
+default-features = false
+
+[dependencies.smallvec]
+version = "1.7"
+optional = true
+default-features = false
+features = ["const_new", "union", "const_generics"]
+
+[dependencies.serde]
+version = "1.0"
+optional = true
+default-features = false
+features = ["derive"]
+
+[dependencies.tracing]
+version = "0.1"
+optional = true
+
+[dependencies.owo-colors]
+version = "3"
+optional = false
+
+[dev-dependencies]
+binator_number = { git = "https://github.com/binator/number.git" }
+binator_base = { git = "https://github.com/binator/base.git" }
+binator_utils = { git = "https://github.com/binator/utils.git" }
+binator_context = { git = "https://github.com/binator/context.git" }
+
+[build-dependencies]
+quote = "1"
+rustfmt-wrapper = "0.1"
+syn = "1"
+
+[package.metadata.docs.rs]
+all-features = true
