@@ -1,3 +1,4 @@
+use alloc::collections::TryReserveError;
 #[cfg(feature = "alloc")]
 use alloc::{
   collections::{
@@ -5,7 +6,6 @@ use alloc::{
     BTreeSet,
     BinaryHeap,
     LinkedList,
-    TryReserveError,
     VecDeque,
   },
   string::String,
