@@ -1,7 +1,7 @@
 [package]
 name = "binator_core"
 authors = ["Stargateur"]
-version = "0.0.1"
+version = "0.0.2"
 description = "This contains all cores traits needed to work with binator"
 license = "Zlib"
 repository = "https://github.com/binator/core"

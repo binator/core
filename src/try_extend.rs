@@ -1,4 +1,3 @@
-use alloc::collections::TryReserveError;
 #[cfg(feature = "alloc")]
 use alloc::{
   collections::{
@@ -6,6 +5,7 @@ use alloc::{
     BTreeSet,
     BinaryHeap,
     LinkedList,
+    TryReserveError,
     VecDeque,
   },
   string::String,
@@ -33,6 +33,7 @@ use smallvec::SmallVec;
 /// Abstracts something which can try extend `&mut self`.
 // FIXME https://github.com/rust-lang/rust/issues/48043
 // FIXME Add Error
+#[cfg(feature = "alloc")]
 pub trait TryExtend {
   /// Item stocked in the collection
   type Item;
@@ -173,6 +174,7 @@ impl<Item, const N: usize> TryExtend for SmallVec<[Item; N]> {
   }
 }
 
+#[cfg(feature = "alloc")]
 impl TryExtend for () {
   type Item = ();
 
